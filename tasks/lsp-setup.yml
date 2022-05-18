@@ -1,0 +1,27 @@
+- name: Install Gopls
+  shell: go install golang.org/x/tools/gopls@latest
+  environment:
+    - GOROOT: /usr/local/go
+    - GOPATH: "{{ ansible_env.HOME }}/Projects/go"
+    - PATH: "{{ ansible_env.PATH }}:{{ ansible_env.GOROOT}}/bin"
+  tags:
+    - install
+    - go
+    - lsp
+
+- name: Install Typescript server
+  npm:
+    name: typescript-language-server
+    global: yes
+  tags:
+    - install
+    - node
+    - lsp
+
+- name: Install Bash server
+  npm:
+    name: bash-language-server
+    global: yes
+  tags:
+    - install
+    - lsp

@@ -1,0 +1,40 @@
+- name: Install Packages 1 (Developer tools, Developer libraries etc)
+  become: true
+  dnf:
+    name: [ "@Development Tools", "@Development Libraries", "ninja-build", "libtool", "autoconf", "automake", "cmake", "gcc", "gcc-c++", "make", "pkgconfig", "unzip", "patch", "gettext", "curl", "lua" ]
+  tags:
+    - install
+    - core
+    - neovim
+
+- name: Install Packages 2 (dnf-plugins-core)
+  become: true
+  dnf:
+    name: "dnf-plugins-core"
+  tags:
+    - install
+    - core
+    - docker
+
+- name: Install Packages 3 (mate, i3, kitty)
+  become: true
+  dnf:
+    name: [ "@mate-desktop", "i3", "picom", "dconf", "dconf-editor", "htop", "kitty" ]
+  tags:
+    - install
+    - core
+    - dotfiles
+
+- name: dconf i3
+  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
+  tags:
+    - install
+    - core
+    - dconf
+
+- name: dconf i3
+  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
+  tags:
+    - install
+    - core
+    - dconf

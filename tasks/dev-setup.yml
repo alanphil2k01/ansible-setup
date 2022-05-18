@@ -1,0 +1,101 @@
+- name: Install Dcoker 1 - Add docker repo
+  become: true
+  shell: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  tags:
+    - install
+    - docker
+
+- name: Install Docker 2
+  become: true
+  dnf:
+    name: [ "docker-ce", "docker-ce-cli", "containerd.io", "docker-compose-plugin" ]
+  tags:
+    - install
+    - docker
+
+- name: Install Docker 3  - Add user to docker group
+  become: true
+  user:
+    name: "{{ username }}"
+    groups: docker
+    append: true
+  tags:
+    - install
+    - docker
+
+- name: Install golang 1
+  get_url:
+    url: https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
+    dest: /tmp/go1.18.2.linux-amd64.tar.gz
+  tags:
+    - install
+    - go
+
+- name: Install golang 2
+  become: true
+  shell: rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go1.18.2.linux-amd64.tar.gz
+  tags:
+    - install
+    - go
+
+- name: Install Python
+  become: true
+  dnf:
+    name: ["python3", "python3-pip"]
+  tags:
+    - install
+    - python
+
+- name: Install nodejs and npm
+  become: true
+  dnf:
+    name: ["nodejs", "npm"]
+  tags:
+    - install
+    - node
+
+- name: Install Platformio
+  pip:
+    name: platformio
+  tags:
+    - install
+    - platformio
+
+- name: Install tmux and fzf
+  dnf:
+    name: [ "tmux", "fzf" ]
+  tags:
+    - install
+    - platformio
+
+- name: Install Yarn
+  npm:
+    name: yarn
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install eslint
+  npm:
+    name: eslint
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install Typescript
+  npm:
+    name: typescript
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install TS-Node
+  npm:
+    name: ts-node
+    global: yes
+  tags:
+    - install
+    - node
