@@ -1,4 +1,5 @@
 - name: Installing stow
+  become: true
   dnf:
     name: stow
   tags:
