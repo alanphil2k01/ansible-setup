@@ -62,13 +62,13 @@
     - install
     - platformio
 
-- name: Install tmux and fzf
+- name: Install productivity tools
   become: true
   dnf:
-    name: [ "tmux", "fzf" ]
+    name: [ "tmux", "fzf", "ripgrep", "xclip", "flameshot" ]
   tags:
     - install
-    - platformio
+    - productivity
 
 - name: Install Yarn
   become: true

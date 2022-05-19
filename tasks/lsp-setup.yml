@@ -1,9 +1,9 @@
 - name: Install Gopls
   shell: go install golang.org/x/tools/gopls@latest
   environment:
-    - GOROOT: /usr/local/go
-    - GOPATH: "{{ ansible_env.HOME }}/Projects/go"
-    - PATH: "{{ ansible_env.PATH }}:{{ ansible_env.GOROOT}}/bin"
+    GOROOT: "/usr/local/go"
+    GOPATH: "{{ ansible_env.HOME }}/Projects/go"
+    PATH: "{{ ansible_env.PATH }}:/usr/local/go/bin"
   tags:
     - install
     - go
