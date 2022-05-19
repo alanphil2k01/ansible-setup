@@ -20,3 +20,4 @@
     - include: tasks/dev-setup.yml
     - include: tasks/nvim-setup.yml
     - include: tasks/lsp-setup.yml
+    - include: tasks/dotfiles.yml
