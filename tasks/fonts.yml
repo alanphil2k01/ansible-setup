@@ -1,0 +1,19 @@
+- name: Install fonts 1
+  become: true
+  file:
+    dest: "/usr/share/fonts/FiraCode"
+    mode: 0755
+    state: directory
+  tags:
+    - install
+    - fonts
+
+- name: Install fonts 2
+  become: true
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+    dest: /usr/share/fonts/FiraCode
+    remote_src: yes
+  tags:
+    - install
+    - fonts
