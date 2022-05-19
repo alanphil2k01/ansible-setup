@@ -15,6 +15,7 @@
     - install
     - core
     - docker
+    - brave
 
 - name: Install Packages 3 (mate, i3, kitty)
   become: true
