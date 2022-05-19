@@ -71,6 +71,7 @@
     - platformio
 
 - name: Install Yarn
+  become: true
   npm:
     name: yarn
     global: yes
@@ -79,6 +80,7 @@
     - node
 
 - name: Install eslint
+  become: true
   npm:
     name: eslint
     global: yes
@@ -87,6 +89,7 @@
     - node
 
 - name: Install Typescript
+  become: true
   npm:
     name: typescript
     global: yes
@@ -95,6 +98,7 @@
     - node
 
 - name: Install TS-Node
+  become: true
   npm:
     name: ts-node
     global: yes

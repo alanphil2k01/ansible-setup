@@ -10,6 +10,7 @@
     - lsp
 
 - name: Install Typescript server
+  become: true
   npm:
     name: typescript-language-server
     global: yes
@@ -19,6 +20,7 @@
     - lsp
 
 - name: Install Bash server
+  become: true
   npm:
     name: bash-language-server
     global: yes
