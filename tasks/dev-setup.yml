@@ -45,6 +45,7 @@
   tags:
     - install
     - python
+    - platformio
 
 - name: Install nodejs and npm
   become: true
@@ -62,6 +63,7 @@
     - platformio
 
 - name: Install tmux and fzf
+  become: true
   dnf:
     name: [ "tmux", "fzf" ]
   tags:

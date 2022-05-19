@@ -25,3 +25,19 @@
     - install
     - dotfiles
     - stow
+
+- name: Install zsh
+  become: true
+  dnf:
+    name: zsh
+  tags:
+    - install
+    - dotfiles
+    - zsh
+
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  tags:
+    - install
+    - dotfiles
+    - zsh
