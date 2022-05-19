@@ -10,7 +10,7 @@
 - name: Install Packages 2 (dnf-plugins-core)
   become: true
   dnf:
-    name: "dnf-plugins-core"
+    name: [ "dnf-plugins-core", "util-linux-user" ]
   tags:
     - install
     - core
