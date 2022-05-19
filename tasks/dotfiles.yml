@@ -38,7 +38,7 @@
 
 - name: Change shell to zsh
   become: true
-  shell: chsh -s $(which zsh)
+  shell: chsh -s $(which zsh) {{ username }}
   tags:
     - install
     - dotfiles
