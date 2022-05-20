@@ -9,6 +9,26 @@
     - go
     - lsp
 
+- name: Install Lua server 1
+  file:
+    dest: "{{ ansible_env.HOME }}/Projects/lsp/lua-language-server"
+    mode: 0766
+    state: directory
+  tags:
+    - install
+    - lua
+    - lsp
+
+- name: Install Lua server 2
+  unarchive:
+    src: https://github.com/sumneko/lua-language-server/releases/download/3.2.3/lua-language-server-3.2.3-linux-x64.tar.gz
+    dest: "{{ ansible_env.HOME }}/Projects/lsp/lua-language-server"
+    remote_src: yes
+  tags:
+    - install
+    - lua
+    - lsp
+
 - name: Install Typescript server
   become: true
   npm:
@@ -19,10 +39,55 @@
     - node
     - lsp
 
+- name: Install clangd
+  become: true
+  dnf:
+    name: [ "clang", "clang-tools-extra" ]
+  tags:
+    - install
+    - lsp
+    - clangd
+
 - name: Install Bash server
   become: true
   npm:
     name: bash-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+- name: Install Vim server
+  become: true
+  npm:
+    name: vim-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+- name: Install Solidity server
+  become: true
+  npm:
+    name: solidity-language-server
+    global: yes
+  tags:
+    - install
+    - lsp
+
+- name: Install Pyright server
+  become: true
+  npm:
+    name: pyright
+    global: yes
+  tags:
+    - install
+    - lsp
+
+- name: Install Svelte server
+  become: true
+  npm:
+    name: svelte-language-server
     global: yes
   tags:
     - install

@@ -18,8 +18,8 @@
     - include: tasks/core-setup.yml
     - include: tasks/git-setup.yml
     - include: tasks/dev-setup.yml
-    - include: tasks/nvim-setup.yml
-    - include: tasks/lsp-setup.yml
     - include: tasks/dotfiles.yml
     - include: tasks/brave.yml
     - include: tasks/fonts.yml
+    - include: tasks/nvim-setup.yml
+    - include: tasks/lsp-setup.yml

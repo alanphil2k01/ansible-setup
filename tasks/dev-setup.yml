@@ -26,14 +26,14 @@
 - name: Install golang 1
   get_url:
     url: https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
-    dest: /tmp/go1.18.2.linux-amd64.tar.gz
+    dest: /tmp/go.tar.gz
   tags:
     - install
     - go
 
 - name: Install golang 2
   become: true
-  shell: rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go1.18.2.linux-amd64.tar.gz
+  shell: rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go.tar.gz
   tags:
     - install
     - go
