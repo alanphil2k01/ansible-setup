@@ -39,6 +39,16 @@
     - node
     - lsp
 
+- name: Install eslint
+  become: true
+  npm:
+    name: vscode-langservers-extracted
+    global: yes
+  tags:
+    - install
+    - node
+    - lsp
+
 - name: Install clangd
   become: true
   dnf:

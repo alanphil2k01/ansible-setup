@@ -23,3 +23,4 @@ WORKDIR /home/alan/ansible
 FROM alan
 COPY . .
 # CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
+CMD ["sh", "-c", "ansible-playbook --ask-become-pass --vault-password-file .vault --skip-tags dconf local.yml", "&&", "bash"]

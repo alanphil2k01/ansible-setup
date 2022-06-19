@@ -14,12 +14,12 @@
       - install
       - core
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/core-setup.yml
-    - include: tasks/git-setup.yml
-    - include: tasks/dev-setup.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/brave.yml
-    - include: tasks/fonts.yml
-    - include: tasks/nvim-setup.yml
-    - include: tasks/lsp-setup.yml
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/core-setup.yml
+    - import_tasks: tasks/git-setup.yml
+    - import_tasks: tasks/dev-setup.yml
+    - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/brave.yml
+    - import_tasks: tasks/fonts.yml
+    - import_tasks: tasks/nvim-setup.yml
+    - import_tasks: tasks/lsp-setup.yml
