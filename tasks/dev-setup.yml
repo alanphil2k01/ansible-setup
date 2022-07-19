@@ -38,6 +38,12 @@
     - install
     - go
 
+- name: Install Rust
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --profile complete --no-modify-path  -y
+  tags:
+    - install
+    - rust
+
 - name: Install Python
   become: true
   dnf:
