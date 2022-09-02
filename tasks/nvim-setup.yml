@@ -40,9 +40,11 @@
     - install
     - neovim
 
-- name: Install Vim-Plug
-  shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+- name: Install packer.nvim
+  ansible.builtin.git:
+    repo: 'https://github.com/wbthomason/packer.nvim'
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    depth: 1
   tags:
-    - install
-    - dotfiles
+    - packer
     - neovim
