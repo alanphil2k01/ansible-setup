@@ -26,6 +26,14 @@
     - core
     - dotfiles
 
+- name: Install RPM Fusion
+  become: true
+  shell:  dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+  tags:
+    - install
+    - core
+    - rpm-fusion
+
 - name: dconf i3
   shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
   tags:

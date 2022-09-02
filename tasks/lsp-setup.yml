@@ -93,13 +93,14 @@
     - lsp
 
 - name: Install Solidity server
-  become: true
-  npm:
-    name: solidity-language-server
-    global: yes
+  get_url:
+    url: "{{ solc_url }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/solc"
+    mode: "a+x"
   tags:
     - install
     - lsp
+    - solidity
 
 - name: Install Pyright server
   become: true
@@ -108,6 +109,7 @@
     global: yes
   tags:
     - install
+    - python
     - lsp
 
 - name: Install Svelte server
@@ -118,3 +120,4 @@
   tags:
     - install
     - lsp
+    - svelte

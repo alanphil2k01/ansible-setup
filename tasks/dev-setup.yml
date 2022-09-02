@@ -25,7 +25,7 @@
 
 - name: Install golang 1
   get_url:
-    url: https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
+    url: "{{ go_url }}"
     dest: /tmp/go.tar.gz
   tags:
     - install
@@ -103,7 +103,7 @@
     - install
     - node
 
-- name: Install TS-Node
+- name: Install ts-node
   become: true
   npm:
     name: ts-node
