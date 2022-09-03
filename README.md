@@ -8,7 +8,7 @@ echo "VAULT_PASS" >> .vault
 Install ansible on fedora
 ```sh
 sudo dnf update -y
-sudo dnf install ansible -y
+sudo dnf install git ansible -y
 ```
 Run ansible-pull
 ```sh

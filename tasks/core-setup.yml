@@ -17,10 +17,10 @@
     - docker
     - brave
 
-- name: Install Packages 3 (mate, i3, kitty)
+- name: Install Packages 3 (mate, i3, kitty, polybar)
   become: true
   dnf:
-    name: [ "@mate-desktop", "i3", "picom", "dconf", "dconf-editor", "htop", "kitty" ]
+    name: [ "@mate-desktop", "i3", "picom", "dconf", "dconf-editor", "htop", "kitty", "polybar" ]
   tags:
     - install
     - core
