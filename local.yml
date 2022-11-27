@@ -4,8 +4,7 @@
     dest_ssh_dir: "{{ lookup('env', 'HOME') }}/.ssh"
     Projects: "{{ lookup('env', 'HOME') }}/Projects"
     username: "alan"
-    go_url: "https://go.dev/dl/go1.19.linux-amd64.tar.gz"
-    solc_url: "https://github.com/ethereum/solidity/releases/download/v0.8.16/solc-static-linux"
+    go_url: "https://go.dev/dl/go1.19.3.linux-amd64.tar.gz"
   pre_tasks:
   - name: Update Dnf
     become: true

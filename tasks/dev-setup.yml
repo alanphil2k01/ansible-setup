@@ -44,6 +44,12 @@
     - install
     - rust
 
+- name: Install Solana
+  shell: sh -c "$(curl -sSfL https://release.solana.com/stable/install)" --no-modify-path
+  tags:
+    - install
+    - solana
+
 - name: Install Python
   become: true
   dnf:

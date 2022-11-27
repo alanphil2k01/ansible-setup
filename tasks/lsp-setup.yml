@@ -93,10 +93,10 @@
     - lsp
 
 - name: Install Solidity server
-  get_url:
-    url: "{{ solc_url }}"
-    dest: "{{ ansible_env.HOME }}/.local/bin/solc"
-    mode: "a+x"
+  become: true
+  npm:
+    name: solidity-ls
+    global: yes
   tags:
     - install
     - lsp
