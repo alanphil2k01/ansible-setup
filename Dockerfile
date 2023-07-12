@@ -1,10 +1,13 @@
 FROM fedora:latest as base
 
+RUN echo "max_parallel_downloads=20" >> /etc/dnf/dnf.conf
+
+
 RUN dnf upgrade -y
 
 RUN dnf install ansible -y
 
-RUN dnf install "@mate-desktop"  "@Development Tools" "@Development Libraries" -y
+RUN dnf install "@Xfce Desktop" "@mate-desktop"  "@Development Tools" "@Development Libraries" -y
 
 RUN dnf install i3 dnf-plugins-core -y
 

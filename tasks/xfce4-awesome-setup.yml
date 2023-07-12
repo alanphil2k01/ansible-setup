@@ -1,0 +1,22 @@
+- name: Install Desktop Packages (xfce4, awesome, kitty)
+  become: true
+  dnf:
+    name: [ "@Xfce Desktop", "awesome", "picom", "nitrogen", "htop", "kitty" ]
+  tags:
+    - install
+    - xfce4
+    - dotfiles
+
+- name: xfconf-query awesome 1
+  shell: xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -t string -s "awesome" -a
+  tags:
+    - install
+    - xfce4
+    - xfconf
+
+- name: xfconf-query awesome 2
+  shell: xfconf-query -c xfce4-session -p /sessions/Failsafe/Client4_Command -t string -s ""
+  tags:
+    - install
+    - xfce4
+    - xfconf

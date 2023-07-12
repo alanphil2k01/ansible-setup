@@ -1,0 +1,23 @@
+- name: Install Desktop Packages (mate, i3, kitty, polybar)
+  become: true
+  dnf:
+    name: [ "@mate-desktop", "i3", "picom", "dconf", "dconf-editor", "htop", "kitty", "polybar" ]
+    allowerasing: true
+  tags:
+    - install
+    - mate
+    - dotfiles
+
+- name: dconf i3
+  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
+  tags:
+    - install
+    - mate
+    - dconf
+
+- name: dconf i3
+  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
+  tags:
+    - install
+    - mate
+    - dconf

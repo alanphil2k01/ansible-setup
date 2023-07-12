@@ -2,6 +2,7 @@
   become: true
   dnf:
     name: [ "@Development Tools", "@Development Libraries", "ninja-build", "libtool", "autoconf", "automake", "cmake", "gcc", "gcc-c++", "make", "pkgconfig", "unzip", "patch", "gettext", "curl", "lua" ]
+    allowerasing: true
   tags:
     - install
     - core
@@ -17,15 +18,6 @@
     - docker
     - brave
 
-- name: Install Packages 3 (mate, i3, kitty, polybar)
-  become: true
-  dnf:
-    name: [ "@mate-desktop", "i3", "picom", "dconf", "dconf-editor", "htop", "kitty", "polybar" ]
-  tags:
-    - install
-    - core
-    - dotfiles
-
 - name: Install RPM Fusion
   become: true
   shell:  dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -33,17 +25,3 @@
     - install
     - core
     - rpm-fusion
-
-- name: dconf i3
-  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
-  tags:
-    - install
-    - core
-    - dconf
-
-- name: dconf i3
-  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
-  tags:
-    - install
-    - core
-    - dconf

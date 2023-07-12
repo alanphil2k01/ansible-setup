@@ -4,7 +4,7 @@
     dest_ssh_dir: "{{ lookup('env', 'HOME') }}/.ssh"
     Projects: "{{ lookup('env', 'HOME') }}/Projects"
     username: "alan"
-    go_url: "https://go.dev/dl/go1.19.3.linux-amd64.tar.gz"
+    go_url: "https://go.dev/dl/go1.20.6.linux-amd64.tar.gz"
   pre_tasks:
   - name: Update Dnf
     become: true
@@ -15,12 +15,37 @@
       - install
       - core
   tasks:
-    - import_tasks: tasks/ssh.yml
-    - import_tasks: tasks/core-setup.yml
-    - import_tasks: tasks/git-setup.yml
-    - import_tasks: tasks/dev-setup.yml
-    - import_tasks: tasks/dotfiles.yml
-    - import_tasks: tasks/brave.yml
-    - import_tasks: tasks/fonts.yml
-    - import_tasks: tasks/nvim-setup.yml
-    - import_tasks: tasks/lsp-setup.yml
+    - name: SSH setup
+      import_tasks: tasks/ssh.yml
+
+    - name: Setup mate with i3
+      include_tasks: tasks/mate-i3-setup.yml
+      when: wm is defined and wm == "i3"
+
+    - name: Setup Xfce4 with awesome wm
+      include_tasks: tasks/xfce4-awesome-setup.yml
+      when: wm is not defined or wm == "awesome"
+
+    - name: Install Core Packages
+      import_tasks: tasks/core-setup.yml
+
+    - name: Configure git
+      import_tasks: tasks/git-setup.yml
+
+    - name: Install dev packages
+      import_tasks: tasks/dev-setup.yml
+
+    - name: Setup dotfiles
+      import_tasks: tasks/dotfiles.yml
+
+    - name: Install Brave Browser
+      import_tasks: tasks/brave.yml
+
+    - name: Install Fonts
+      import_tasks: tasks/fonts.yml
+
+    - name: Build and install neovim
+      import_tasks: tasks/nvim-setup.yml
+
+    - name: Setup LSP
+      import_tasks: tasks/lsp-setup.yml

@@ -27,13 +27,25 @@
   get_url:
     url: "{{ go_url }}"
     dest: /tmp/go.tar.gz
+    timeout: 600
   tags:
     - install
     - go
 
 - name: Install golang 2
   become: true
-  shell: rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go.tar.gz
+  file:
+    path: /usr/local/go
+    state: absent
+  tags:
+    - install
+    - go
+
+- name: Install golang 3
+  become: true
+  unarchive:
+    src: /tmp/go.tar.gz
+    dest: /usr/local
   tags:
     - install
     - go

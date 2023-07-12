@@ -8,7 +8,7 @@
     - install
     - ssh
 
-- name: Install ssh key
+- name: Install ssh private key
   copy:
     src: "{{ source_ssh_dir }}/id_rsa"
     dest: "{{ dest_ssh_dir }}/id_rsa"
@@ -18,7 +18,7 @@
     - install
     - ssh
 
-- name: Install ssh key public
+- name: Install ssh public key
   copy:
     src: "{{ source_ssh_dir }}/id_rsa.pub"
     dest: "{{ dest_ssh_dir }}/id_rsa.pub"

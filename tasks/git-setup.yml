@@ -4,7 +4,7 @@
     scope: global
     value: "alanphilipose@gmail.com"
   tags:
-    - git-personal
+    - git
 
 - name: Git personal setup name
   become: yes
@@ -13,4 +13,4 @@
     scope: global
     value: "alanphil2k01"
   tags:
-    - git-personal
+    - git
